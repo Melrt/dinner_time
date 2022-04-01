@@ -1,0 +1,15 @@
+<% content_for :custom_search do %>
+  <div id="custom_search" class="container">
+    <%= form_for :search, layout: :inline do |f| %>
+      <%= f.select :field, options_for_select([["make", "make"], ["model", "model"], ["year", "year"]]), selected: [["make", "make"], ["model", "model"], ["year", "year"]] %>
+      <%= f.text_field :value, placeholder: "Ford, Chrysler, etc." %>
+      <%= f.submit "Search" %>
+    <% end %>
+  </div>
+<% end %>
+
+
+<%= form_for :ingredients, url: search_recipes_path, methode: :post do |form| %>
+  <%= form.text_field :name %>
+  <%= form.submit  %>
+<% end  %>
