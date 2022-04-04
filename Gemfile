@@ -12,8 +12,10 @@ gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry', '~> 0.14.1'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
