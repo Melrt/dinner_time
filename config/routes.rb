@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'recipes#index'
 
-  resources :recipes, only: [:index, :show] do
+  resources :recipes, only: [:show] do
     collection do 
       post :search
     end

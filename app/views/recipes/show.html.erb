@@ -1,0 +1,12 @@
+<h1><%= recipe.title %></h1>
+<%= image_tag recipe.image, alt: "alttext", with: "100px", height: "100px" %>
+
+<p>Duration : <%= recipe.human_duration %></p>
+
+<ul>
+  <p><b>Ingredients :</b></p>
+  <% recipe.ingredients.each do |ingredient| %>
+    <li><%= ingredient %></li>
+  <% end %>
+</ul>
+

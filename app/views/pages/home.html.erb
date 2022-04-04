@@ -1,6 +1,0 @@
-<h1>Find recipes with YOUR ingredients</h1>
-<p>Quive a list of ingredients you have in your fridge, séparate by return.</p>
-<%= form_for :search, url: search_recipes_path, methode: :post do |form| %>
-  <%= form.text_area :ingredients %>
-  <%= form.submit "Find recipes" %>
-<% end  %>

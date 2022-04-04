@@ -1,24 +1,24 @@
 class RecipesController < ApplicationController
+  decorates_assigned :recipe
+  
   def search
-    # ma route ne correspond pas à mon controller
-    # je peux peut etre raccoursir
-    ingredients = search_params[:ingredients].lines.map(&:strip).join('%')
-    @matching_recipes = Recipe.where("data ->> ? ILIKE ?", 'ingredients', '%' + ingredients + '%')
-    # est ce que ca va prendre celle qui corresponde le mieux ?
-    render :index
-  end
+    ingredients       = search_params[:ingredients].split.join('%')
+    @matching_recipes = search_matching_recipes(ingredients)
 
-  def index
-    
+    render :index
   end
 
   def show
     @recipe = Recipe.find(params[:id])
   end
 
-private
+  private
 
   def search_params
     params.require(:search).permit(:ingredients)
+  end
+
+  def search_matching_recipes(ingredients)
+    Recipe.where("data ->> ? ILIKE ?", 'ingredients', '%' + ingredients + '%')
   end
 end
