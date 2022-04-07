@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
     ingredients       = search_params[:ingredients].split.join('%')
     @matching_recipes = search_matching_recipes(ingredients)
 
+    flash.now[:notice] = "No recipe found, try with other ingredients !" unless @matching_recipes.any? 
     render :index
   end
 
